@@ -2,8 +2,8 @@
 
 class RESTbitsgap
 {
-    protected $publicKey = '';
-    protected $privateKey = '';
+    protected $publicKey = 'pub@';
+    protected $privateKey = 'pr@';
     protected $base_url  = 'https://bitsgap.com/api/';
     protected $api_version = 'v1';
     protected $url = '';
