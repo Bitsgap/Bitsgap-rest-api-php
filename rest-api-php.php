@@ -85,40 +85,6 @@ class RESTbitsgap
       return $this->request('order-book', $params);
     }
 
-    /* Get markets and pairs ticker orderbook
-      Request pamars:
-        market - market name
-        pair - bitsgap pair name
-        start - begin timestamp interval
-        end - end timestamp interval
-    */
-    public function tick_orderbook($market, $pair, $start, $end) {
-      $params = [
-        'market'  => $market,
-        'pair'    => $pair,
-        'start'   => $start,
-        'end'     => $end,
-      ];
-      return $this->request('ticker/order-book', $params);
-    }
-
-    /* Get markets and pairs ticker transactions
-      Request pamars:
-        market - market name
-        pair - bitsgap pair name
-        start - begin timestamp interval
-        end - end timestamp interval
-    */
-    public function tick_transactions($market, $pair, $start, $end) {
-      $params = [
-        'market'  => $market,
-        'pair'    => $pair,
-        'start'   => $start,
-        'end'     => $end,
-      ];
-      return $this->request('ticker/transactions', $params);
-    }
-
     /* Get markets and pairs Open-High-Low-Close values
       Request pamars:
         market - market name
@@ -262,12 +228,6 @@ print_r($rest_api->last_price('kraken', 'BTC_USD'));
 
 // test market and pair orderbook
 // print_r($rest_api->orderbook('kraken', 'BTC_USD'));
-
-// test market and pair ticker orderbook in selected interval
-// print_r($rest_api-> tick_orderbook('kraken', 'BTC_USD', time() - 3600, time()));
-
-// test market and pair ticker transactions in selected interval
-// print_r($rest_api->tick_transactions('kraken', 'BTC_USD', time() - 3600, time()));
 
 // test market and pair OHLC in selected interval
 // print_r($rest_api->ohlc('kraken', 'BTC_USD', time() - 3600, time()));
