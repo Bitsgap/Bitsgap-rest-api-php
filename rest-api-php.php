@@ -199,7 +199,7 @@ class RESTbitsgap
      * Cancel order
      * Request pamars:
      *   market - market name
-     *   pid - market order id
+     *   id - market order id
      */
     public function order_cancel($market, $id, $is_demo=false) {
       $params = [
@@ -207,6 +207,27 @@ class RESTbitsgap
         'id'     => $id
       ];
       $request_path = 'orders/cancel';
+
+      if($is_demo)
+        $request_path = 'demo/'.$request_path;
+
+      return $this->request($request_path, $params);
+    }
+
+    /*
+     * Move order
+     * Request pamars:
+     *   market - market name
+     *   id - market order id
+     *   price - new price for order
+     */
+    public function order_move($market, $id, $price, $is_demo=false) {
+      $params = [
+        'market' => $market,
+        'id'     => $id,
+        'price'  => $price
+      ];
+      $request_path = 'orders/move';
 
       if($is_demo)
         $request_path = 'demo/'.$request_path;
@@ -264,3 +285,8 @@ print_r($rest_api->last_price('kraken', 'BTC_USD'));
 // print_r($rest_api->order_cancel('bit-z', '1691634186'));
 // user cancel order demo market
 // print_r($rest_api->order_cancel('kraken', '4d342eef9cf74c72b3d08a897a7259c1', true));
+
+// user move order real market
+// print_r($rest_api->order_move('bit-z', '1691634186', '0.001'));
+// user move order demo market
+// print_r($rest_api->order_move('kraken', '4d342eef9cf74c72b3d08a897a7259c1', '0.001', true));
