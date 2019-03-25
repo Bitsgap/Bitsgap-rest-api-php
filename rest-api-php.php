@@ -82,7 +82,7 @@ class RESTbitsgap
         'market'  => $market,
         'pair'    => $pair
       ];
-      return $this->request('order-book', $params);
+      return $this->request('orderbook', $params);
     }
 
     /* Get markets and pairs Open-High-Low-Close values
